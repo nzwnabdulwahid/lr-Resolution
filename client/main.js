@@ -11,3 +11,33 @@ Template.body.helpers({
 		return Resolution.find();
 	}
 });
+
+Template.body.events({
+	'submit .new-resolution' : function(event){
+		var title = event.target.title.value;
+
+
+		Resolution.insert({
+			title: title,
+			createdAt: new Date()
+		});
+
+		event.target.title.value = '';
+		return false;
+	}
+
+});
+
+Template.resolution.events({
+	'click .toggle-checked': function(){
+		Resolution.update(this._id, {$set: {
+			checked: !this.checked
+		}})
+	},
+
+	'click .delete': function(){
+		Resolution.remove(this._id);
+	}
+
+
+});

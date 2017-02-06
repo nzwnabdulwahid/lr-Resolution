@@ -3,19 +3,33 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  
+  <div class="container">
+    <header>
+      <h1>Resolution Stuff</h1>
+    </header>
 
-  <ul>
-    {{#each resolutions}}    
-      {{> resolution }}    
-    {{/each}}
-  </ul>
+    <form class="new-resolution">
+      <input type="text" name="title" placeholder="New Resolution">
+      <input type="submit" value="Submit!">
+    </form>
+    <ul>
+      {{#each resolutions}}    
+        {{> resolution }}    
+      {{/each}}
+    </ul>
+  </div>
+
+  
   
 </body>
 
 
 <template name="resolution">
-  <li>{{title}}</li>
+  <li class="{{#if checked}}checked{{/if}}">
+    <input type="checkbox" checked="{{ checked }}" class="toggle-checked">
+    <span class="text">{{title}}</span> <button class="delete">Remove</button>
+  </li>
 
 </template>
 
