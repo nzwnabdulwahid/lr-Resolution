@@ -7,17 +7,22 @@
   <div class="container">
     <header>
       <h1>Resolution Stuff</h1>
-    </header>
+      <label class="hide-finished">
+        <input type="checkbox" checked="{{hideFinished}}">
+        Hide Finished Resolution
+      </label>
 
-    <form class="new-resolution">
-      <input type="text" name="title" placeholder="New Resolution">
-      <input type="submit" value="Submit!">
-    </form>
-    <ul>
-      {{#each resolutions}}    
-        {{> resolution }}    
-      {{/each}}
-    </ul>
+      </header>
+
+      <form class="new-resolution">
+        <input type="text" name="title" placeholder="New Resolution">
+        <input type="submit" value="Submit!">
+      </form>
+      <ul>
+        {{#each resolutions}}    
+          {{> resolution }}    
+        {{/each}}
+      </ul>
   </div>
 
   

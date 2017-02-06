@@ -8,7 +8,16 @@ import './main.html';
 
 Template.body.helpers({
 	resolutions: function(){
-		return Resolution.find();
+		if (Session.get('hideFinished')){
+			return Resolution.find({
+				checked: {$ne: true}
+			});
+		}
+		else { return Resolution.find(); }
+		
+	},
+	hideFinished: function(){
+		return Session.get("hideFinished");
 	}
 });
 
@@ -24,6 +33,10 @@ Template.body.events({
 
 		event.target.title.value = '';
 		return false;
+	},
+	'change .hide-finished': function(event){
+		Session.set('hideFinished', event.target.checked);
+
 	}
 
 });
